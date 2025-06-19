@@ -2,6 +2,8 @@
 
 A Progressive Web App for tracking your guitar collection with offline support. Keep detailed records of each guitar you own including purchase info, specs, and service history.
 
+**Live Demo**: [https://guitar-tracker.netlify.app](https://guitar-tracker.netlify.app)
+
 ## Tech Stack
 
 - **Frontend**: React 19 + TypeScript
