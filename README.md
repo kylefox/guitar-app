@@ -1,54 +1,62 @@
-# React + TypeScript + Vite
+# Guitar Collection Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Progressive Web App for tracking your guitar collection with offline support. Keep detailed records of each guitar you own including purchase info, specs, and service history.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React 19 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4
+- **Database**: IndexedDB (via Dexie.js)
+- **Routing**: React Router v7
+- **Forms**: React Hook Form
+- **Icons**: Lucide React
+- **PWA**: vite-plugin-pwa
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+- Node.js 18+
+- npm
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Setup
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run Development Server
+```bash
+npm run dev
+```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build for Production
+```bash
+npm run build
+npm run preview  # Preview production build
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Other Commands
+```bash
+npm run lint     # Run ESLint
+npm run typecheck  # Run TypeScript compiler check
+```
+
+## Features
+
+- ✅ Add, edit, delete, and view guitars
+- ✅ Search across all guitar fields
+- ✅ Offline-first with IndexedDB
+- ✅ Responsive design (mobile/desktop)
+- ✅ Installable as PWA
+- 🚧 Service history tracking (coming soon)
+
+## Project Structure
+
+```
+src/
+├── components/     # Shared UI components
+├── pages/         # Route page components
+├── services/      # Database layer
+├── types/         # TypeScript interfaces
+└── main.tsx       # App entry point
 ```
