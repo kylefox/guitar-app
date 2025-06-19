@@ -60,8 +60,8 @@ export class GuitarService {
       .filter(guitar => 
         guitar.brand.toLowerCase().includes(lowerQuery) ||
         guitar.model.toLowerCase().includes(lowerQuery) ||
-        guitar.serialNumber?.toLowerCase().includes(lowerQuery) ||
-        guitar.notes?.toLowerCase().includes(lowerQuery)
+        (guitar.serialNumber?.toLowerCase().includes(lowerQuery) ?? false) ||
+        (guitar.notes?.toLowerCase().includes(lowerQuery) ?? false)
       )
       .toArray();
   }
@@ -87,9 +87,8 @@ export class ServiceRecordService {
     return await db.serviceRecords
       .where('guitarId')
       .equals(guitarId)
-      .orderBy('date')
-      .reverse()
-      .toArray();
+      .toArray()
+      .then(records => records.sort((a, b) => b.date.localeCompare(a.date)));
   }
 
   static async getById(id: number): Promise<ServiceRecord | undefined> {
